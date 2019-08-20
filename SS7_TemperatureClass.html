@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Build Temperature Class</title>
+</head>
+<body>
+    <script>
+        // F= C*1.8 +32;
+        // K= C + 273.15;
+        // ký tự Độ C : &#8451;
+        function Temperature(celsius){
+            this.celsius=celsius;
+            this.symbolic={cel:"&#8451",ken: "K",fah: "F"};
+            this.setTemperature=function(celsius){
+                this.celsius=celsius;
+            }
+            this.convertCelsiusToFahrenheit= function(){
+                return this.celsius*1.8 + 32;
+            }
+            this.convertCelsiusToKenvin = function(){
+                return this.celsius +273.15;
+            }
+            this.display=function(typeOfTemperature){
+                if(typeOfTemperature=="celsius"){
+                    return "Nhiệt độ Celsius: " + this.celsius +  this.symbolic.cel;
+                }else if(typeOfTemperature=="kenvin"){
+                    return "Nhiệt độ Kenvin: " + this.convertCelsiusToKenvin() +  this.symbolic.ken;
+
+                }else if(typeOfTemperature=="fahrenheit"){
+                    return "Nhiệt độ Fahrenheit: " + this.convertCelsiusToFahrenheit() +  this.symbolic.fah;
+                }
+            }
+        }
+
+        let celsiusValue=prompt("Nhập giá trị độ C: ","");
+        celsiusValue=parseFloat(celsiusValue);
+        let temObj= new Temperature(celsiusValue);
+        document.write(temObj.display("celsius") + "<br/>");
+        document.write(temObj.display("fahrenheit") + "<br/>");
+        document.write(temObj.display("kenvin"));
+
+
+
+    </script>
+</body>
+</html>
